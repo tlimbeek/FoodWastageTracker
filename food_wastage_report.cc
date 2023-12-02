@@ -1,9 +1,8 @@
-// Please fill in below.
-// <Your name>
-// <Your section number> (e.g. CPSC 121L-01)
-// <Date>
-// <Your csu.fullerton.edu email>
-// <Your GitHub username>
+// Theresa Limbeek
+// CPSC 121L-14
+// 11-23-23
+// tlimbeek@csu.fullerton.edu
+// tlimbeek
 
 #include "food_wastage_report.h"
 
@@ -19,3 +18,10 @@
 // to tell the compiler that each function belongs to the FoodWastageReport
 // class.
 // ===================================================================
+/*
+double FoodWastageReport::TotalCost() const {
+  for (FoodWastageRecord record : records_) {
+    total_cost_ += record.Cost();
+  }
+  return total_cost_;
+}*/

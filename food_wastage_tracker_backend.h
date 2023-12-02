@@ -15,7 +15,8 @@
 class FoodWastageTrackerBackend {
  public:
   FoodWastageTrackerBackend(const std::string &food_wastage_records_filepath)
-      : food_wastage_records_filepath_{food_wastage_records_filepath} {}
+      : food_wastage_records_filepath_{food_wastage_records_filepath},
+        food_wastage_tracker_{} {}
 
   // Reads the food wastage records from the file at
   // food_wastage_records_filepath_, and loads those in memory. If the file is
@@ -52,5 +53,6 @@ class FoodWastageTrackerBackend {
   // A top level class object to track the food wastage.
   // TODO: Add a FoodWastageTracker object as a member here. Make sure you stick
   // to the Google's style guide while naming your variable.
+  FoodWastageTracker food_wastage_tracker_;
 };
 #endif
