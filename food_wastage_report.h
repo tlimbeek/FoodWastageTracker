@@ -24,34 +24,24 @@ class FoodWastageReport {
  public:
   FoodWastageReport(const std::vector<FoodWastageRecord> &food_wastage_records)
       : food_wastage_records_{food_wastage_records} {}
-  // figure this out please, count number of instances of strings in vectors and
+
+  // TODO: count number of instances of strings in vectors and
   // return most recurring
-  /*
-  const std::vector<std::string>& MostWastedFoods() const {
-    std::vector<std::string> most_wasted_foods {};
-    for (FoodWastageRecord record : records_) {
-      most_wasted_foods.push_back(record.FoodName());
-    }
-    return most_wasted_foods;
-  }
-  */
-  // const std::vector<std::string>& MostCostlyMeals() const;
-  // const std::vector<std::string>& CommonWastageReasons() const;
-  // const std::vector<std::string>& CommonDisposalMethods() const;
-  // const std::vector<std::string>& ReductionStrategies(const
-  // std::vector<std::string> &common_wastage_reasons) const; double TotalCost()
-  // const;
+  const std::vector<std::string>& MostWastedFoods() const { return most_wasted_foods_; }
+  const std::vector<std::string>& MostCostlyMeals() const { return most_costly_meals_; }
+  const std::vector<std::string>& CommonWastageReasons() const { return common_wastage_reasons_; }
+  const std::vector<std::string>& CommonDisposalMethods() const { return common_disposal_methods_; }
+  const std::vector<std::string>& ReductionStrategies() const { return reduction_strategies_; }
+  double TotalCost() const { return total_cost_; }
 
  private:
   const std::vector<FoodWastageRecord> &food_wastage_records_;
-  /*
   std::vector<std::string> most_wasted_foods_;
   std::vector<std::string> most_costly_meals_;
   std::vector<std::string> common_wastage_reasons_;
   std::vector<std::string> common_disposal_methods_;
   std::vector<std::string> reduction_strategies_;
-  */
-  // double total_cost_;
+  double total_cost_;
 };
 
 #endif
