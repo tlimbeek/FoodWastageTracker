@@ -93,14 +93,14 @@ FoodWastageRecord DeserializeFoodWastageRecordFromJSON(
    *  object as follows: `json_obj["date_"].GetString()`.
    *  Use that as an function  argument for the mutator that you'll call.
    */
-   record.SetDate(json_obj["date_"].GetString());
+  record.SetDate(json_obj["date_"].GetString());
 
   /*  2. Use the mutator/setter function for meal from the FoodWastageRecord
    *  class to set the meal in `record` object. You can get the meal from JSON
    *  object as follows: `json_obj["meal_"].GetString()`.
    *  Use that as an function  argument for the mutator that you'll call.
    */
-   record.SetMeal(json_obj["meal_"].GetString());
+  record.SetMeal(json_obj["meal_"].GetString());
 
   /* 3. Use the mutator/setter function for food name from the
    * FoodWastageRecord class to set the food name in `record` object. You can
@@ -108,7 +108,7 @@ FoodWastageRecord DeserializeFoodWastageRecordFromJSON(
    * `json_obj["food_name_"].GetString()`. Use that as an function  argument for
    * the mutator that you'll call.
    */
-   record.SetFoodName(json_obj["food_name_"].GetString());
+  record.SetFoodName(json_obj["food_name_"].GetString());
 
   /* 4. Use the mutator/setter function for quantity from the
    * FoodWastageRecord class to set the quantity in `record` object. You can get
@@ -116,7 +116,7 @@ FoodWastageRecord DeserializeFoodWastageRecordFromJSON(
    * `json_obj["qty_in_oz_"].GetDouble()`. Use that as an function  argument for
    * the mutator that you'll call.
    */
-   record.SetQuantityOz(json_obj["qty_in_oz_"].GetDouble());
+  record.SetQuantityOz(json_obj["qty_in_oz_"].GetDouble());
 
   /* 5. Use the mutator/setter function for wastage reason from the
    * FoodWastageRecord class to set the wastage reason in `record` object. You
@@ -124,7 +124,7 @@ FoodWastageRecord DeserializeFoodWastageRecordFromJSON(
    * `json_obj["wastage_reason_"].GetString()`. Use that as an function argument
    * for the mutator that you'll call.
    */
-   record.SetWastageReason(json_obj["wastage_reason_"].GetString());
+  record.SetWastageReason(json_obj["wastage_reason_"].GetString());
 
   /* 6. Use the mutator/setter function for disposal mechanism from the
    * FoodWastageRecord class to set the disposal mechanism in `record` object.
@@ -132,14 +132,14 @@ FoodWastageRecord DeserializeFoodWastageRecordFromJSON(
    * `json_obj["disposal_mechanism_"].GetString()`. Use that as an function
    * argument for the mutator that you'll call.
    */
-   record.SetDisposalMechanism(json_obj["disposal_mechanism_"].GetString());
+  record.SetDisposalMechanism(json_obj["disposal_mechanism_"].GetString());
 
   /*  7. Use the mutator/setter function for cost from the FoodWastageRecord
    *  class to set the cost in `record` object. You can get the cost from JSON
    *  object as follows: `json_obj["cost_"].GetDouble()`.
    *  Use that as an function  argument for the mutator that you'll call.
    */
-   record.SetCost(json_obj["cost_"].GetDouble());
+  record.SetCost(json_obj["cost_"].GetDouble());
   return record;
 }
 
@@ -340,7 +340,8 @@ bool FoodWastageTrackerBackend::WriteRecordsToJSONFile() const {
   rapidjson::StringBuffer ss;
   rapidjson::Writer<rapidjson::StringBuffer> writer(ss);
   writer.StartArray();
-  const std::vector<FoodWastageRecord>& records = food_wastage_tracker_.GetFoodWastageRecords();
+  const std::vector<FoodWastageRecord> &records =
+      food_wastage_tracker_.GetFoodWastageRecords();
   // Call the member function in the FoodWastageTracker class, on the
   // member object that you added in food_wastage_tracker.h, that returns all
   // the FoodWastageRecord objects. Store the returned records in the vector
@@ -381,9 +382,10 @@ crow::json::wvalue FoodWastageTrackerBackend::DeleteRecord(
   // member object that you added in food_wastage_tracker.h, that deletes
   // `record` and returns the status of the delete operation as a bool. Store
   // the returned value in the bool declared above.
-  
-  //////////////////////////////////////////////////////////////////////////////this line specifically causes an error:
-  //delete_result = food_wastage_tracker_.DeleteRecord(record);
+
+  //////////////////////////////////////////////////////////////////////////////this
+  /// line specifically causes an error:
+  // delete_result = food_wastage_tracker_.DeleteRecord(record);
   status["success"] = delete_result;
   return status;
 }
@@ -407,7 +409,8 @@ crow::json::wvalue FoodWastageTrackerBackend::GetRecords() const {
   return records_json;
 }
 crow::json::wvalue FoodWastageTrackerBackend::GetFoodWastageReport() const {
-  FoodWastageReport generated_report = food_wastage_tracker_.GetFoodWastageReport();
+  FoodWastageReport generated_report =
+      food_wastage_tracker_.GetFoodWastageReport();
   // TODO: Call the member function in the FoodWastageTracker class, on the
   // member object that you added in food_wastage_tracker.h, that generates a
   // FoodWastageReport object using all the FoodWastageRecords and returns it.

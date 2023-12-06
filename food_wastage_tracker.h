@@ -25,10 +25,13 @@ class FoodWastageTracker {
   bool AddRecord(const FoodWastageRecord& added_record);
   // extra credit:
   bool DeleteRecord(const FoodWastageRecord& deleted_record);
-  const std::vector<FoodWastageRecord>& GetFoodWastageRecords() const { return food_wastage_records_; }
+  const std::vector<FoodWastageRecord>& GetFoodWastageRecords() const {
+    return food_wastage_records_;
+  }
   const FoodWastageReport& GetFoodWastageReport() const {
-    //TODO: Find a way to return a FoodWastageReport object without instantiating it in the Getter function
-    //return FoodWastageReport{food_wastage_records_};
+    // TODO: Find a way to return a FoodWastageReport object without
+    // instantiating it in the Getter function return
+    // FoodWastageReport{food_wastage_records_};
   }
 
  private:
