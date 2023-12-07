@@ -1,6 +1,5 @@
 #ifndef FOOD_WASTAGE_TRACKER_H_
 #define FOOD_WASTAGE_TRACKER_H_
-#include <algorithm>
 
 #include "food_wastage_record.h"
 #include "food_wastage_report.h"
@@ -29,9 +28,9 @@ class FoodWastageTracker {
     return food_wastage_records_;
   }
   const FoodWastageReport& GetFoodWastageReport() const {
-    // TODO: Find a way to return a FoodWastageReport object without
-    // instantiating it in the Getter function return
-    // FoodWastageReport{food_wastage_records_};
+    // Generates and returns a food wastage report
+    FoodWastageReport food_wastage_report{food_wastage_records_};
+    return food_wastage_report;
   }
 
  private:

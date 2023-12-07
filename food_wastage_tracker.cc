@@ -35,7 +35,7 @@ bool FoodWastageTracker::DeleteRecord(const FoodWastageRecord& deleted_record) {
         food_wastage_records_.at(i).QuantityOz() ==
             deleted_record.QuantityOz() &&
         food_wastage_records_.at(i).Cost() == deleted_record.Cost()) {
-      food_wastage_records_.erase((food_wastage_records_.begin() + i) - 1);
+      food_wastage_records_.erase(food_wastage_records_.begin() + i);
       return true;
     }
   }
