@@ -9,22 +9,11 @@
 #include <algorithm>
 #include <map>
 
-// ========================= YOUR CODE HERE =========================
-// This implementation file is where you should implement
-// the member functions declared in the header (food_wastage_report.h), only
-// if you didn't implement them inline within food_wastage_report.h.
-//
-// Remember to specify the name of the class with :: in this format:
-//     <return type> MyClassName::MyFunction() {
-//        ...
-//     }
-// to tell the compiler that each function belongs to the FoodWastageReport
-// class.
-// ===================================================================
+
 // cycle through food wastage record vector inserting food names to map, for
 // each reoccurence of food name, increment element value by 1, and return
 // vector of food names with most occurences.
-const std::vector<std::string>& FoodWastageReport::MostWastedFoods() const {
+std::vector<std::string> FoodWastageReport::MostWastedFoods() const {
   std::vector<std::string> most_wasted_foods{};  // initialize local variable
   std::map<std::string, int> wasted_foods{};
   // create a map of food names, incriment element's value by 1 for each
@@ -57,11 +46,9 @@ const std::vector<std::string>& FoodWastageReport::MostWastedFoods() const {
   return most_wasted_foods;  // return local variable
 }
 
-const std::vector<std::string>& FoodWastageReport::MostCostlyMeals() const {
+std::vector<std::string> FoodWastageReport::MostCostlyMeals() const {
   std::vector<std::string> most_costly_meals{};
-  std::map<std::string, double>
-      costly_meals{};  // each element contains name of meal to cost of meal
-                       // wasted
+  std::map<std::string, double> costly_meals{};  // each element contains name of meal to cost of meal wasted
   for (FoodWastageRecord record : food_wastage_records_) {
     // if record.meal isn't included in costly_meals, then insert meal in
     // costly_meals with the cost of that meal.
@@ -90,7 +77,7 @@ const std::vector<std::string>& FoodWastageReport::MostCostlyMeals() const {
   return most_costly_meals;
 }
 
-const std::vector<std::string>& FoodWastageReport::CommonWastageReasons()
+std::vector<std::string> FoodWastageReport::CommonWastageReasons()
     const {
   std::vector<std::string> most_common_wastage_reasons{};
   std::map<std::string, int> common_wastage_reasons{};
@@ -123,7 +110,7 @@ const std::vector<std::string>& FoodWastageReport::CommonWastageReasons()
   return most_common_wastage_reasons;
 }
 
-const std::vector<std::string>& FoodWastageReport::CommonDisposalMethods()
+std::vector<std::string> FoodWastageReport::CommonDisposalMethods()
     const {
   std::vector<std::string> most_common_disposal_methods{};
   std::map<std::string, int> common_disposal_methods{};
@@ -156,7 +143,7 @@ const std::vector<std::string>& FoodWastageReport::CommonDisposalMethods()
   return most_common_disposal_methods;
 }
 
-const std::vector<std::string>& FoodWastageReport::ReductionStrategies() const {
+std::vector<std::string> FoodWastageReport::ReductionStrategies() const {
   // possible reduction strategies: "Buy less food", "Cook small servings",
   // "Recycle left overs", "Donate before expiration"
   std::vector<std::string> reduction_strategies{};
@@ -164,44 +151,33 @@ const std::vector<std::string>& FoodWastageReport::ReductionStrategies() const {
   std::vector<std::string> common_wastage_reasons{this->CommonWastageReasons()};
   // identify appropriate strategy based off of most common wastage reasons
   // locate expired among most common wastage reasons
-  std::vector<std::string>::iterator it = std::find(
-      common_wastage_reasons.begin(), common_wastage_reasons.end(), "Expired");
-  if (it != common_wastage_reasons
-                .end()) {  // if expired is one of the common disposal methods,
-                           // then suggest donate before expiration
+  std::vector<std::string>::iterator it = std::find(common_wastage_reasons.begin(), common_wastage_reasons.end(), "Expired");
+  if (it != common_wastage_reasons.end()) {  // if expired is one of the common disposal methods,
+                                             // then suggest donate before expiration
     reduction_strategies.push_back("Donate before expiration");
   } else {
-    reduction_strategies.push_back(
-        "Recycle left overs");  // if expired is not one of the common disposal
-                                // methods, then suggest recycle leftovers
+    reduction_strategies.push_back("Recycle left overs");  // if expired is not one of the common disposal
+                                                           // methods, then suggest recycle leftovers
   }
   // locate tastes bad among most common wastage reasons
-  it = std::find(common_wastage_reasons.begin(), common_wastage_reasons.end(),
-                 "Tastes bad");
-  if (it ==
-      common_wastage_reasons
-          .end()) {  // if tastes bad is not included in common disposal methods
-    if (std::find(common_wastage_reasons.begin(), common_wastage_reasons.end(),
-                  "Too much left overs") !=
-        common_wastage_reasons
-            .end()) {  // if too much left overs is included in common disposal
-                       // methods, then suggest small servings and buying less
+  it = std::find(common_wastage_reasons.begin(), common_wastage_reasons.end(), "Tastes bad");
+  if (it == common_wastage_reasons.end()) {  // if tastes bad is not included in common disposal methods
+    if (std::find(common_wastage_reasons.begin(), common_wastage_reasons.end(), "Too much left overs") != common_wastage_reasons.end()) {  // if too much left overs is included in common disposal
+                                                                                                                                           // methods, then suggest small servings and buying less
       reduction_strategies.push_back("Cook small servings");
       reduction_strategies.push_back("Buy less food");
     }
   } else {  // if tastes bad is included in common disposal methods, then
             // suggest buy less food
     reduction_strategies.push_back("Buy less food");
-    if (std::find(common_wastage_reasons.begin(), common_wastage_reasons.end(),
-                  "Too much left overs") !=
-        common_wastage_reasons
-            .end()) {  // if too much leftovers is included in common disposal
-                       // methods, then suggest cook small servings
+    if (std::find(common_wastage_reasons.begin(), common_wastage_reasons.end(), "Too much left overs") != common_wastage_reasons.end()) {  // if too much leftovers is included in common disposal
+                                                                                                                                           // methods, then suggest cook small servings
       reduction_strategies.push_back("Cook small servings");
     }
   }
   return reduction_strategies;
 }
+
 double FoodWastageReport::TotalCost() const {
   double total_cost = 0.0;
   for (FoodWastageRecord record : food_wastage_records_) {

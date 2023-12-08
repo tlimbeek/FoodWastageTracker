@@ -27,11 +27,11 @@ class FoodWastageReport {
 
   // count number of instances of strings in vectors and
   // return most recurring
-  const std::vector<std::string>& MostWastedFoods() const;
-  const std::vector<std::string>& MostCostlyMeals() const;
-  const std::vector<std::string>& CommonWastageReasons() const;
-  const std::vector<std::string>& CommonDisposalMethods() const;
-  const std::vector<std::string>& ReductionStrategies() const;
+  std::vector<std::string> MostWastedFoods() const;
+  std::vector<std::string> MostCostlyMeals() const;
+  std::vector<std::string> CommonWastageReasons() const;
+  std::vector<std::string> CommonDisposalMethods() const;
+  std::vector<std::string> ReductionStrategies() const;
   double TotalCost() const;
 
  private:

@@ -27,7 +27,7 @@ class FoodWastageTracker {
   const std::vector<FoodWastageRecord>& GetFoodWastageRecords() const {
     return food_wastage_records_;
   }
-  const FoodWastageReport& GetFoodWastageReport() const {
+  FoodWastageReport GetFoodWastageReport() const {
     // Generates and returns a food wastage report
     FoodWastageReport food_wastage_report{food_wastage_records_};
     return food_wastage_report;

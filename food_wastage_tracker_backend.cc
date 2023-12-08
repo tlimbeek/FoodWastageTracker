@@ -340,8 +340,7 @@ bool FoodWastageTrackerBackend::WriteRecordsToJSONFile() const {
   rapidjson::StringBuffer ss;
   rapidjson::Writer<rapidjson::StringBuffer> writer(ss);
   writer.StartArray();
-  const std::vector<FoodWastageRecord> &records =
-      food_wastage_tracker_.GetFoodWastageRecords();
+  const std::vector<FoodWastageRecord> &records = food_wastage_tracker_.GetFoodWastageRecords();
   // Call the member function in the FoodWastageTracker class, on the
   // member object that you added in food_wastage_tracker.h, that returns all
   // the FoodWastageRecord objects. Store the returned records in the vector
